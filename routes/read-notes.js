@@ -1,4 +1,4 @@
-const rn = require('express').Router();
+const notes = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 
 const readNotes = {
@@ -6,3 +6,5 @@ const readNotes = {
         
     }
 }
+
+module.exports = notes;

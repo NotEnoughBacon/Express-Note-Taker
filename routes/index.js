@@ -10,3 +10,6 @@ app.post('/writenotes', writeNotes.createNote);
 app.delete('/deletenotes', deleteNotes.deleteNote);
 
 module.exports = app;
+
+
+//use app.get and move everything to one folder. notes.get etc.
