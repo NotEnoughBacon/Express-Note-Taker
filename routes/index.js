@@ -1,13 +1,9 @@
 const express = require('express');
-const readNotes = require('./read-notes');
-const writeNotes = require('./write-notes');
-const deleteNotes = require('./delete-notes');
+const notes = require('./notes');
 
 const app = express();
 
-app.get('/readnotes', readNotes.getNotes);
-app.post('/writenotes', writeNotes.createNote);
-app.delete('/deletenotes', deleteNotes.deleteNote);
+app.use('/notes', notes);
 
 module.exports = app;
 
