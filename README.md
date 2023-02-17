@@ -7,7 +7,7 @@ Quickly add notes that get saved, so you can remember what you need to do.
 * [Contribution](#contribution)
 * [Questions?](#questions)
 ## Usage
-Go to the 
+Go to the [website](https://dashboard.heroku.com/apps/thawing-headland-95872)
 ## Contribution
 You can clone the repo.
 ## Questions
