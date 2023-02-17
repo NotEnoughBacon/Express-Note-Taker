@@ -1,34 +1,29 @@
 const notes = require('express').Router();
-const { json } = require('express');
-const { readFile, writeFile } = require('fs');
+const { readFromFile, readAndAppend } = require('../helper/fsUtils')
 const { v4: uuidv4 } = require('uuid');
+const bodyParser = require('body-parser');
+
+notes.use(bodyParser.json());
 
 notes.get('/', (req, res) => {
 
-    readFile('./db/db.json', 'utf-8', (err,data) => {
-        if (err) {
-            console.log(err)
-        }
-
-        const jsonData = JSON.parse(data);
-
-        res.json(jsonData)
-    })
+   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 });
 
 notes.post('/', (req, res) => {
     
-    const {title, text} = req.body
-
-    if (req.body) {
-
+    const {text, title} = req.body
+    
+    if (title && text) {
+        
         const newNote = {
-            title,
-            text,
-            noteId: uuidv4()
+            title: title,
+            text: text,
+            id: uuidv4()
         };
 
-        writeFile(newNote, './db/db.json')
+        readAndAppend(newNote, './db/db.json')
+        
         res.json('Note added successfully')
     } else {
         res.error('Error in adding Note')
