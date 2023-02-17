@@ -2,12 +2,15 @@ const express = require('express');
 const path = require('path');
 const api = require('./routes/index');
 
-const PORT = 3001 //process.env.PORT;
+//allowing heroku to set the port
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+//using the api routing folder
 app.use('/api', api);
 
+//serving static pages for the web service
 app.use(express.static('public'));
 
 //route for homepage
